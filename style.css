@@ -8,8 +8,12 @@ body {
   margin: auto;
 }
 
+#sprunki {
+  text-shadow: 2px 2px 5px rgb(57, 183, 3);
+}
+
 nav {
-  background: rgb(241, 245, 4);
+  background-image: linear-gradient(rgb(241, 245, 4), rgb(253, 255, 141));
   margin: 0 auto;
   display: flex;
   padding: 10px;
@@ -44,7 +48,7 @@ a {
 }
 
 main {
-  background: rgb(57, 183, 3);
+  background-image: linear-gradient(rgb(57, 183, 3), rgb(154, 255, 110));
   display: flex;
   margin-top: 20px;
   border-radius: 10px;
@@ -87,14 +91,14 @@ h3 {
 }
 
 #portfolio li {
-  background: #8cd8fa;
+  background-image: linear-gradient(#8cd8fa, #c9eeff);
   padding: 10px;
   border-radius: 10px;
   margin-bottom: 10px;
 }
 
 #portfolio li:hover {
-  background: #c9eeff;
+  background-image: linear-gradient(#c9eeff, #ebf9ff);
 }
 
 #portfolio a {
@@ -103,7 +107,7 @@ h3 {
 }
 
 /* responsive web design */
-@media screen and (min-width: 120px) and (max-width: 1080 px) {
+@media screen and (min-width: 120px) and (max-width: 1080px) {
   main {
     height: 100ch;
     zoom: 1.5;
