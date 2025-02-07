@@ -1,5 +1,7 @@
 body {
   background-image: url(Epic-Sprunki.jpg);
+  background-size: 100vw 100vh;
+  background-repeat: no-repeat;
   font-family: "Courier New", Courier, monospace;
 }
 

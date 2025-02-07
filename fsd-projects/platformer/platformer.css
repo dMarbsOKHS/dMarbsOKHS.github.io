@@ -3,7 +3,7 @@ body {
 }
 
 canvas {
-  background-color: lightblue;
+  background-image: linear-gradient(lightblue, lightgreen, yellow);
   margin: 20px;
 }
 
