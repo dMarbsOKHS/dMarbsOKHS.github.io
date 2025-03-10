@@ -6,9 +6,11 @@
     <script src="jquery.min.js"></script>
     <style>
       .box {
-        width: 70px;
-        height: 70px;
-        background-image: url(SillyWenda.webp);
+        width: 200px;
+        height: 200px;
+        /* background-image: url(SillyWenda.webp);
+        background-size: 200px; */
+        background-color: gray;
         font-size: 300%;
         text-align: center;
         user-select: none;
@@ -44,11 +46,12 @@
         var board = jQuery(".board"); // reference to the HTML .board element
         var boardWidth = board.width(); // the maximum X-Coordinate of the screen
         var boardHeight = jQuery(window).height();
-        // Every 50 milliseconds, call the update Function (see below)
-        setInterval(update, 25);
+        // Every 20 milliseconds, call the update Function (see below)
+        var interval = setInterval(update, 20);
 
         // Every time the box is clicked, call the handleBoxClick Function (see below)
         box.on("click", handleBoxClick);
+        board.on("click", handleMisClick);
 
         // moves the Box to a new position on the screen along the X and Y Axis
         function moveBoxTo(newPositionX, newPositionY) {
@@ -69,10 +72,25 @@
 
         var positionX = 0;
         var points = 0;
-        var speed = 10;
-        var positionY = 300;
-        var speedY = 10;
+        var speed = 1;
+        var positionY = 200;
+        var speedY = 1;
 
+        var colorStr = "rgb(50, 25, 250)";
+        box.css("background-color", colorStr);
+
+        function endGame() {
+          clearInterval(interval);
+        }
+
+        var misClick = 0;
+
+        function handleMisClick() {
+          misClick += 1;
+          if (misClick === 10) {
+            endGame();
+          }
+        }
         /*
       	This Function will be called 20 times/second. Each time it is called,
       	it should move the Box to a new location. If the box drifts off the screen
@@ -87,17 +105,24 @@
 
           if (positionX > boardWidth) {
             speed = speed * -1;
-          }
-          if (positionX < 0) {
+          } else if (positionX < 0) {
             speed = speed * -1;
           }
 
           if (positionY > boardHeight) {
             speedY = speedY * -1;
-          }
-          if (positionY < 0) {
+          } else if (positionY < 0) {
             speedY = speedY * -1;
           }
+        }
+
+        function getRandomColor() {
+          var randColor1 = Math.random() * 255;
+          var randColor2 = Math.random() * 255;
+          var randColor3 = Math.random() * 255;
+          colorStr =
+            "rgb(" + randColor1 + ", " + randColor2 + ", " + randColor3 + ")";
+          box.css("background-color", colorStr);
         }
 
         /*
@@ -106,11 +131,16 @@
       	the left side of the screen.
       	*/
         function handleBoxClick() {
-          positionX = 0;
-          positionY = 300;
+          getRandomColor();
+          var randNum = Math.random() * boardWidth;
+          var randNumY = Math.random() * boardHeight;
+          positionX = randNum;
+          positionY = randNumY;
           points += 1;
-          speed = 3 * points + 10;
-          speedY = 3 * points + 10;
+          if (points % 3 === 0) {
+            speed = 1.01 * points + 0.1;
+            speedY = 1.01 * points + 0.1;
+          }
           changeBoxText(points);
         }
       })();
