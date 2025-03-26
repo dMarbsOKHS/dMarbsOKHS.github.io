@@ -131,6 +131,7 @@
       	the left side of the screen.
       	*/
         function handleBoxClick() {
+          misClick -= 1;
           getRandomColor();
           var randNum = Math.random() * boardWidth;
           var randNumY = Math.random() * boardHeight;
@@ -140,6 +141,7 @@
           if (points % 3 === 0) {
             speed = 1.01 * points + 0.1;
             speedY = 1.01 * points + 0.1;
+          
           }
           changeBoxText(points);
         }
