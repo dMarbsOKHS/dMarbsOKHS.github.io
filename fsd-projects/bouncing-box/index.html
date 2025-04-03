@@ -84,11 +84,13 @@
         }
 
         var misClick = 0;
+        var misClicked = true;
 
         function handleMisClick() {
-          misClick += 1;
-          if (misClick === 10) {
-            endGame();
+          if (misClicked === true) {
+            misClick += 1;
+          } else if (misClicked === false) {
+            misClick -= 1;
           }
         }
         /*
@@ -114,6 +116,11 @@
           } else if (positionY < 0) {
             speedY = speedY * -1;
           }
+
+          if (misClick === 10) {
+            endGame();
+          }
+          misClicked = false;
         }
 
         function getRandomColor() {
@@ -131,17 +138,17 @@
       	the left side of the screen.
       	*/
         function handleBoxClick() {
-          misClick -= 1;
+          misClicked = true;
+          points += 1;
+          misClick -= points;
           getRandomColor();
           var randNum = Math.random() * boardWidth;
           var randNumY = Math.random() * boardHeight;
           positionX = randNum;
           positionY = randNumY;
-          points += 1;
           if (points % 3 === 0) {
             speed = 1.01 * points + 0.1;
             speedY = 1.01 * points + 0.1;
-          
           }
           changeBoxText(points);
         }
