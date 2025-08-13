@@ -28,7 +28,7 @@ var background = function (window) {
         //////////////////////////////////////////////////////////////////
         // ANIMATION VARIABLES HERE //////////////////////////////////////
         //////////////////////////////////////////////////////////////////
-        // TODO (several):
+        // TODO (several): var tree;
       
       
         // called at the start of game and whenever the page is resized
@@ -43,13 +43,28 @@ var background = function (window) {
             background.addChild(backgroundFill);
             
             // TODO 2: - Add a moon and starfield
-            
-            
+            var sprunkiBG =
+            draw.bitmap("img/background.png");
+            sprunkiBG.x = 0;
+            sprunkiBG.y = 0;
+            sprunkiBG.scaleX = 1.6;
+            sprunkiBG.scaleY = 0.5;
+            background.addChild(sprunkiBG);
+
+            for (var i = 0; i <= 100; i++) {
+            var glitch = draw.bitmap("img/glitch.png");
+            glitch.x = canvasWidth * Math.random();
+            glitch.y = groundY * Math.random();
+            background.addChild(glitch);
+            }
             // TODO 4: Part 1 - Add buildings!     Q: This is before TODO 4 for a reason! Why?
             
             
             // TODO 3: Part 1 - Add a tree
-            
+        tree = draw.bitmap("img/tree.png");
+        tree.x = 0;
+        tree.y = groundY;
+        background.addChild(tree);
             
         } // end of render function - DO NOT DELETE
         
@@ -63,7 +78,11 @@ var background = function (window) {
             var groundY = ground.y;
             
             // TODO 3: Part 2 - Move the tree!
-            
+            tree.x = tree.x + 1;
+
+            if (tree.x < -200) {
+                tree.x = canvasWidth;
+            }
             
             // TODO 4: Part 2 - Parallax
             
