@@ -1,0 +1,19 @@
+#die {
+    height: 300px;
+    width: 300px;
+    background-color: lightgray;
+    position: relative;
+    background: linear-gradient(lightgray, white);
+    background-size: 100% 100%;
+}
+
+#die2 {
+    height: 300px;
+    width: 300px;
+    background-color: lightgray;
+    position: relative;
+    background: linear-gradient(lightgray, white);
+    background-size: 100% 100%;
+    top: -380px;
+    left: 300px;
+}

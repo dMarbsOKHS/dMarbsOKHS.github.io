@@ -14,10 +14,10 @@ var score = 0; // variable to keep track of the score
 var started = false; // variable to keep track of whether the game has started
 
 // TODO 4, Part 1: Create the apple variable
-
+const apple = {};
 
 // TODO 5, Part 1: Create the snake variable
-
+const snake = {};
 
 // Constant Variables
 var ROWS = 20;
@@ -48,10 +48,13 @@ init();
 
 function init() {
   // TODO 5, Part 2: initialize the snake
-  
-  
+  snake.body = [];
+  makeSnakeSquare(10, 10);
+  makeSnakeSquare(10, 9);
+  makeSnakeSquare(10, 8);
+  snake.head = snake.body[0];
   // TODO 4, Part 3: initialize the apple
-
+  makeApple();
 
   // TODO 6, Part 1: Initialize the interval
 
@@ -207,9 +210,12 @@ function endGame() {
  */
 function makeApple() {
   // TODO 4, Part 2: Fill in this function's code block
-
-
-
+  apple.element = $("<div>").addClass("apple").appendTo(board);
+  var randomPosition;
+  getRandomAvailablePosition();
+  apple.row = randomPosition.row;
+  apple.column = randomPosition.column;
+  repositionSquare(apple);
 }
 
 /* Create an HTML element for a snakeSquare using jQuery. Then, given a row and
@@ -218,7 +224,16 @@ function makeApple() {
  */
 function makeSnakeSquare(row, column) {
   // TODO 5, Part 2: Fill in this function's code block
-
+  const snakeSquare = {};
+  snakeSquare.element = $("<div>").addClass("snake").appendTo(board);
+  snakeSquare.row = row;
+  snakeSquare.column = column;
+  repositionSquare(snakeSquare);
+  if (snake.body.length === 0) {
+    snakeSquare.element.attr("id", "snake-head");
+    snake.body.push(snakeSquare);
+    snake.tail = snakeSquare;
+  }
 
 
 
