@@ -122,21 +122,35 @@ function autoUpgrade() {
   if (incr === 51) {
     $("#die").css("background","linear-gradient(#FFD700, white)");
     $("#die2").css("background","linear-gradient(#FFD700, white)");
+    $("body").css("background-image", "url(gold.png)");
+    $("body").css("background-size", "100vw 150vh");
   } else if (incr === 101) {
     $("#die").css("background","linear-gradient(#4EE2EC, white)"); 
     $("#die2").css("background","linear-gradient(#4EE2EC, white)");
+    $("body").css("background-image", "url(diamond.jpg)");
+    $("body").css("background-size", "100vw 150vh");
   } else if (incr === 251) {
     $("#die").css("background","linear-gradient(black, gray)"); 
     $("#die2").css("background","linear-gradient(black, gray)");
+    $("body").css("background-image", "url(void.jpg)");
+    $("body").css("background-size", "100vw 125vh");
+    $("h1").css("color", "white");
   } else if (incr === 1001) {
-    $("#die").css("background","linear-gradient(red, orange, yellow, green, blue, indigo, violet, purple)"); 
-    $("#die2").css("background","linear-gradient(red, orange, yellow, green, blue, indigo, violet, purple)");
+    $("#die").css("background","linear-gradient(red, orange, yellow, green, cyan, blue, indigo, violet, purple)"); 
+    $("#die2").css("background","linear-gradient(red, orange, yellow, green, cyan, blue, indigo, violet, purple)");
+    $("body").css("background-image", "url(rainbow.jpg)");
+    $("body").css("background-size", "100vw 125vh");
+    $("h1").css("color", "black");
   } else if (incr === 2501) {
     $("#die").css("background","linear-gradient(red, blue)"); 
     $("#die2").css("background","linear-gradient(blue, red)");
-  } else if (incr === 10001) {
+    $("body").css("background-image", "url(rednblue.jpg)");
+    $("body").css("background-size", "100vw 125vh");
+  } else if (incr === 5001) {
     $("#die").css("background","linear-gradient(darkred, orange)"); 
-    $("#die2").css("background","linear-gradient(blue, lightblue)"); 
+    $("#die2").css("background","linear-gradient(blue, lightblue)");
+    $("body").css("background-image", "url(hotncold.jpg)");
+    $("body").css("background-size", "100vw 125vh");
   }
 }
 
