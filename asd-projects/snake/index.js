@@ -210,9 +210,42 @@ function handleAppleCollision() {
   
   makeSnakeSquare(row, column);
   
-  /*if (score >= 10) {
-    snake.tail.element.css("background-image", "linear-gradient(#FFD700, white)")
-  }*/
+  for (var i = 0; i < snake.body.length; i++) {
+    if (score >= 5 && score < 12) {
+      snake.tail.element.css("background", "linear-gradient(#D4AF37, white)");
+      snake.body[i].element.css("background", "linear-gradient(#D4AF37, white)");
+    } 
+    
+    else if (score >= 12 && score < 25) {
+      snake.tail.element.css("background", "linear-gradient(#4EE2EC, white)");
+      snake.body[i].element.css("background", "linear-gradient(#4EE2EC, white)");
+    } 
+    
+    else if (score >= 25 && score < 37) {
+      snake.tail.element.css("background", "linear-gradient(black, gray)");
+      snake.body[i].element.css("background", "linear-gradient(black, gray)");
+    } 
+    
+    else if (score >= 37 && score < 50) {
+      snake.tail.element.css("background", "linear-gradient(red, orange, yellow, green, cyan, blue, indigo, violet, purple)");
+      snake.body[i].element.css("background", "linear-gradient(red, orange, yellow, green, cyan, blue, indigo, violet, purple)");
+    } 
+    
+    else if (score >= 50 && score < 100) {
+      snake.tail.element.css("background", "linear-gradient(darkred, orange, blue, lightblue)");
+      snake.body[i].element.css("background", "linear-gradient(darkred, orange, blue, lightblue)");
+    } 
+    
+    else if (score >= 100 && score < 250) {
+      snake.tail.element.css("background", "linear-gradient(#8F99FB, #D2AFFF)");
+      snake.body[i].element.css("background", "linear-gradient(#8F99FB, #D2AFFF)");
+    } 
+    
+    else if (score >= 250) {
+      snake.tail.element.css("background", "linear-gradient(black, darkblue)");
+      snake.body[i].element.css("background", "linear-gradient(black, darkblue)");
+    } 
+  }
 }
 
 function hasCollidedWithSnake() {
@@ -224,7 +257,7 @@ function hasCollidedWithSnake() {
     head and each part of the snake's body also knows its own row and column.
   */
 
-  for (var i = 1; i < snake.body.length - 1; i++) {
+  for (var i = 1; i < snake.body.length; i++) {
     if (snake.head.row === snake.body[i].row && snake.head.column === snake.body[i].column) {
       return true;
     }
@@ -351,7 +384,7 @@ function getRandomAvailablePosition() {
       spaceIsAvailable to false so that a new position is generated.
     */
     
-    for (var i = 0; i < snake.body.length - 1; i++) {
+    for (var i = 0; i < snake.body.length; i++) {
       if (randomPosition.row === snake.body[i].row && randomPosition.column === snake.body[i].column) {
         spaceIsAvailable = false;
       }
@@ -369,6 +402,53 @@ function calculateHighScore() {
     sessionStorage.setItem("highScore", score);
     highScore = score;
     alert("New High Score!");
+  }
+
+  if (highScore >= 25 && highScore < 50) {
+    $("body").css("background", "linear-gradient(#D4AF37, white)");
+    $("body").css("background-size", "100vw 100vh");
+    $("#score").css("color", "black");
+    $("#highScore").css("color", "black");
+  } 
+  
+  else if (highScore >= 50 && highScore < 75) {
+    $("body").css("background", "linear-gradient(#4EE2EC, white)");
+    $("body").css("background-size", "100vw 100vh");
+    $("#score").css("color", "black");
+    $("#highScore").css("color", "black");
+  }
+
+  else if (highScore >= 75 && highScore < 100) {
+    $("body").css("background", "linear-gradient(black, gray)");
+    $("body").css("background-size", "100vw 100vh");
+  }
+
+  else if (highScore >= 100 && highScore < 125) {
+    $("body").css("background", "linear-gradient(red, orange, yellow, green, cyan, blue, indigo, violet, purple)");
+    $("body").css("background-size", "100vw 100vh");
+    $("#score").css("color", "black");
+    $("#highScore").css("color", "black");
+  }
+
+  else if (highScore >= 125 && highScore < 200) {
+    $("body").css("background", "linear-gradient(darkred, orange, blue, lightblue)");
+    $("body").css("background-size", "100vw 100vh");
+    $("#score").css("color", "black");
+    $("#highScore").css("color", "black");
+  }
+
+  else if (highScore >= 200 && highScore < 300) {
+    $("body").css(("background-image", "url(glitch.jpg)"));
+    $("body").css("background-size", "100vw 100vh");
+    $("#score").css("color", "black");
+    $("#highScore").css("color", "black");
+  }
+
+  else if (highScore >= 300) {
+    $("body").css(("background-image", "url(idk.jpg)"));
+    $("body").css("background-size", "100vw 100vh");
+    $("#score").css("color", "black");
+    $("#highScore").css("color", "black");
   }
 
   return highScore;
