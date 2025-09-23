@@ -24,10 +24,10 @@ var ROWS = 20;
 var COLUMNS = 20;
 var SQUARE_SIZE = 20;
 var KEY = {
-  LEFT: 37,
-  UP: 38,
-  RIGHT: 39,
-  DOWN: 40,
+  LEFT: 65,
+  UP: 87,
+  RIGHT: 68,
+  DOWN: 83,
 };
 
 // interval variable required for stopping the update function when the game ends
@@ -209,7 +209,15 @@ function handleAppleCollision() {
   var column = snake.tail.column;
   
   makeSnakeSquare(row, column);
+  /*
+  snake.tail.element.css("backgroundColor", colors[colorIndex]);
+  for (var i = 0; i < colors.length; i++) {
+    colorIndex++;
+    colorIndex %= colors.length;
+    return colorIndex;
+  }*/
   
+  // Snake upgrades
   for (var i = 0; i < snake.body.length; i++) {
     if (score >= 5 && score < 12) {
       snake.tail.element.css("background", "linear-gradient(#D4AF37, white)");
@@ -244,7 +252,16 @@ function handleAppleCollision() {
     else if (score >= 250) {
       snake.tail.element.css("background", "linear-gradient(black, darkblue)");
       snake.body[i].element.css("background", "linear-gradient(black, darkblue)");
-    } 
+    }
+
+    // Score upgrades
+    /*if (highScore >= 25 && highScore < 50) {
+      score += 1.25;
+    }
+
+    else if (highScore >= 50 && highScore < 75) {
+      score += 1.5;
+    }*/
   }
 }
 
@@ -403,7 +420,7 @@ function calculateHighScore() {
     highScore = score;
     alert("New High Score!");
   }
-
+  // Background upgrades
   if (highScore >= 25 && highScore < 50) {
     $("body").css("background", "linear-gradient(#D4AF37, white)");
     $("body").css("background-size", "100vw 100vh");
@@ -453,3 +470,8 @@ function calculateHighScore() {
 
   return highScore;
 }
+
+var colors = ["red", "orange", "yellow", "green", "blue", "purple"];
+var colorIndex = 0;
+
+alert("Controls: WASD")
