@@ -16,13 +16,15 @@ body {
 }
 
 nav {
-  background-image: linear-gradient(rgb(241, 245, 4), rgb(253, 255, 141));
+  background: linear-gradient(-90deg, rgb(241, 245, 4), rgb(253, 255, 141));
   margin: 0 auto;
   display: flex;
   padding: 10px;
   border-radius: 10px;
   margin-bottom: 20px;
   border-block: rgb(57, 183, 3) 10px dotted;
+  background-size: 200% 100%;
+  animation: gradient-animation 3s ease infinite;
 }
 
 h1 {
@@ -51,11 +53,13 @@ a {
 }
 
 main {
-  background-image: linear-gradient(rgb(57, 183, 3), rgb(154, 255, 110));
+  background: linear-gradient(-90deg, rgb(57, 183, 3), rgb(154, 255, 110));
   display: flex;
   margin-top: 20px;
   border-radius: 10px;
   border-block: rgb(241, 245, 4) 10px dotted;
+  background-size: 400% 400%;
+  animation: gradient-animation 3s ease-in infinite;
 }
 
 .sidebar {
@@ -94,19 +98,36 @@ h3 {
 }
 
 #portfolio li {
-  background-image: linear-gradient(#8cd8fa, #c9eeff);
+  background-image: linear-gradient(-90deg,#8cd8fa, #c9eeff);
   padding: 10px;
   border-radius: 10px;
   margin-bottom: 10px;
+  background-size: 200% 50%;
+  animation: gradient-animation 3s ease infinite;
 }
 
 #portfolio li:hover {
-  background-image: linear-gradient(#c9eeff, #ebf9ff);
+  background-image: linear-gradient(-90deg, #c9eeff, #ebf9ff);
+  background-size: 200% 100%;
+  animation: gradient-animation 3s ease infinite;
 }
 
 #portfolio a {
   text-decoration: none;
   color: #454545;
+}
+
+/* gradient animation */
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* responsive web design */
