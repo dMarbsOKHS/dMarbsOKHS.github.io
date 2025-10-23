@@ -17,11 +17,13 @@ function runProgram() {
     RIGHT: 39,
     DOWN: 40,
   };
-  var leftWall = 0;
-  var topWall = 0;
-  var rightWall = $("#board").width();
-  var bottomWall = $("#board").height();
+  var leftWall = 0; // Position of the left wall
+  var topWall = 0; // Position of the top wall
+  var rightWall = $("#board").width(); // Position of the right wall
+  var bottomWall = $("#board").height(); // Position of the bottom wall
   // Game Item Objects
+  
+  // Contains the left and top side of the walker along with it's horizontal and vertical speed
   var walker = {
     x: 0,
     y: 0,
@@ -38,8 +40,8 @@ function runProgram() {
 
   Note: You can have multiple event listeners for different types of events.
   */
-  $(document).on("keydown", handleKeyDown);
-  $(document).on("keyup", handleKeyUp);
+  $(document).on("keydown", handleKeyDown); // Detects when a key is pressed
+  $(document).on("keyup", handleKeyUp); // Detects when a key is released
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -48,6 +50,7 @@ function runProgram() {
   On each "tick" of the timer, a new frame is dynamically drawn using JavaScript
   by calling this function and executing the code inside.
   */
+  // Every frame, it checks each function contained within it.
   function newFrame() {
     repositionGameItem();
     wallCollision();
@@ -60,33 +63,38 @@ function runProgram() {
   
   Note: You can have multiple event handlers for different types of events.
   */
+  // Depending on which key is press, it will change either the walker's horizontal speed or its vertical speed in a specific direction.
   function handleKeyDown(event) {
     if (event.which === KEY.LEFT) {
       walker.speedX = -5;
-    } else if (event.which === KEY.UP) {
+    } 
+    
+    if (event.which === KEY.UP) {
       walker.speedY = -5;
-    } else if (event.which === KEY.RIGHT) {
+    } 
+    
+    if (event.which === KEY.RIGHT) {
       walker.speedX = 5;
-    } else if (event.which === KEY.DOWN) {
+    } 
+    
+    if (event.which === KEY.DOWN) {
       walker.speedY = 5;
     }
   }
-
+  // When a key is released, the walker will stop moving in the released key's direction
   function handleKeyUp(event) {
-    if (event.which === KEY.LEFT) {
+    if (event.which === KEY.LEFT || event.which === KEY.RIGHT) {
       walker.speedX = 0;
-    } else if (event.which === KEY.UP) {
-      walker.speedY = 0;
-    } else if (event.which === KEY.RIGHT) {
-      walker.speedX = 0;
-    } else if (event.which === KEY.DOWN) {
+    } 
+    
+    if (event.which === KEY.UP || event.which === KEY.DOWN) {
       walker.speedY = 0;
     }
   }
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
-
+  // stops the game from running
   function endGame() {
     // stop the interval timer
     clearInterval(interval);
@@ -105,22 +113,19 @@ function runProgram() {
   function redrawGameItem() {
     $("#walker").css("left", walker.x);
     $("#walker").css("top", walker.y);
-    console.log("Walker position:", walker.x, walker.y);
   }
 
   // Prevents walker from exiting the board
   function wallCollision() {
-    var walkerWidth = walker.x + 50;
-    var walkerHeight = walker.y + 50;
+    var walkerRightSide = walker.x + 50;
+    var walkerBottomSide = walker.y + 50;
 
-    if (walker.x < leftWall) {
+    if (walker.x < leftWall || walkerRightSide > rightWall) {
       walker.x -= walker.speedX;
-    } else if (walker.y < topWall) {
+    } 
+    
+    if (walker.y < topWall || walkerBottomSide > bottomWall) {
       walker.y -= walker.speedY;
-    } else if (walkerWidth > rightWall) {
-      walker.x -= walker.speedX
-    } else if (walkerHeight > bottomWall) {
-     walker.y -= walker.speedY
     }
   }
 }
