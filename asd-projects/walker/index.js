@@ -117,7 +117,7 @@ function runProgram() {
     var walkerBottomSide = walker.y + 50;
     if (walker.x < leftWall || walkerRightSide > rightWall) {
       walker.x -= walker.speedX;
-    }  
+    } 
     if (walker.y < topWall || walkerBottomSide > bottomWall) {
       walker.y -= walker.speedY;
     }

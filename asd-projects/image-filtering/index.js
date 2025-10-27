@@ -43,8 +43,8 @@ function applyFilter(filterFunction) {
       var pixelArray = rgbStringToArray(pixel);
       // This is where I'll modify the color values later
       filterFunction(pixelArray);
-      var upadtedPixel = rgbArrayToString(pixelArray);
-      image[r][c] = upadtedPixel;
+      var updatedPixel = rgbArrayToString(pixelArray);
+      image[r][c] = updatedPixel;
     }
   }
 }
@@ -58,10 +58,10 @@ function applyFilterNoBackground(filterFunction) {
     for (var c = 0; c < row.length; c++) {
       var pixel = image[r][c];
       if (pixel !== backgroundColor) {
-      var pixelArray = rgbStringToArray(pixel);
-      filterFunction(pixelArray);
-      var upadtedPixel = rgbArrayToString(pixelArray);
-      image[r][c] = upadtedPixel;
+        var pixelArray = rgbStringToArray(pixel);
+        filterFunction(pixelArray);
+        var updatedPixel = rgbArrayToString(pixelArray);
+        image[r][c] = updatedPixel;
       }
     }
   }  
@@ -76,7 +76,7 @@ function keepInBounds(limit) {
 // TODO 4: Create reddify filter function
 // Increases how red the image will appear
 function reddify(pixelArr) {
-  pixelArr[RED] += 200;
+  pixelArr[RED] = 200;
   pixelArr[RED] = keepInBounds(pixelArr[RED]);
 }
 
