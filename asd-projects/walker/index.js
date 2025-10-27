@@ -68,15 +68,12 @@ function runProgram() {
     if (event.which === KEY.LEFT) {
       walker.speedX = -5;
     } 
-    
     if (event.which === KEY.UP) {
       walker.speedY = -5;
     } 
-    
     if (event.which === KEY.RIGHT) {
       walker.speedX = 5;
     } 
-    
     if (event.which === KEY.DOWN) {
       walker.speedY = 5;
     }
@@ -86,7 +83,6 @@ function runProgram() {
     if (event.which === KEY.LEFT || event.which === KEY.RIGHT) {
       walker.speedX = 0;
     } 
-    
     if (event.which === KEY.UP || event.which === KEY.DOWN) {
       walker.speedY = 0;
     }
@@ -119,11 +115,9 @@ function runProgram() {
   function wallCollision() {
     var walkerRightSide = walker.x + 50;
     var walkerBottomSide = walker.y + 50;
-
     if (walker.x < leftWall || walkerRightSide > rightWall) {
       walker.x -= walker.speedX;
-    } 
-    
+    }  
     if (walker.y < topWall || walkerBottomSide > bottomWall) {
       walker.y -= walker.speedY;
     }
