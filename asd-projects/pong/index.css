@@ -12,31 +12,46 @@ body {
 }
 
 #leftPaddle {
-  width: 20px;
-  height: 80px;
+  width: 15px;
+  height: 150px;
   background-color: white;
   border-radius: 10px;
+  border-style: outset;
   position: absolute;
-  top: 220px;
+  top: 200px;
   left: 50px;
 }
 
 #rightPaddle {
-  width: 20px;
-  height: 80px;
+  width: 15px;
+  height: 150px;
   background-color: white;
   border-radius: 10px;
+  border-style: outset;
   position: absolute;
-  top: 220px;
+  top: 200px;
   left: 810px;
 }
 
 #ball {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   background-color: white;
-  border-radius: 10px;
+  border-radius: 20px;
+  border-color: white;
+  border-style: groove;
   position: absolute;
   top: 245px;
   left: 440px;
+}
+
+#middleline {
+  width: 0px;
+  height: 540px;
+  background-color: transparent;
+  position: absolute;
+  left: 455px;
+  border-style: dashed;
+  border-color: white;
+  border-width: 5px;
 }

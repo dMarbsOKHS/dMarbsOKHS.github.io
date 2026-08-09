@@ -12,7 +12,13 @@ function runProgram(){
   const FRAMES_PER_SECOND_INTERVAL = 1000 / FRAME_RATE;
   
   // Game Item Objects
-
+  const leftPaddle = {
+    x: parseFloat($("#leftPaddle").css("left")),
+    y: parseFloat($("#leftPaddle").css("top")),
+    width: $("#leftPaddle").width(),
+    height: $("#leftPaddle").height(),
+    id: "#leftPaddle"
+  }
 
   // one-time setup
   let interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
